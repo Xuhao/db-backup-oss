@@ -1,0 +1,39 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: mongodb-backup
+spec:
+  schedule: "@daily"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: mongodb-backup
+            image: xuhao/db-backup-oss:latest
+            env:
+              - name: MONGODB_HOST
+                value: "TODO: set MONGODB_HOST"
+              - name: MONGODB_PORT
+                value: "TODO: set MONGODB_PORT"
+              - name: MONGODB_USER
+                value: "TODO: set MONGODB_USER"
+              - name: MONGODB_PASS
+                value: "TODO: set MONGODB_PASS"
+              - name: DATE_FORMAT
+                value: "TODO: set DATE_FORMAT"
+              - name: OSS_ENDPOINT
+                value: "TODO: set OSS_ENDPOINT"
+              - name: OSS_BUCKET
+                value: "TODO: set OSS_BUCKET"
+              - name: OSS_FOLDER
+                value: "TODO: set OSS_FOLDER"
+              - name: OSS_ACCESS_KEY_ID
+                value: "TODO: set OSS_ACCESS_KEY_ID"
+              - name: OSS_ACCESS_KEY_SECRET
+                value: "TODO: set OSS_ACCESS_KEY_SECRET"
+              - name: DB_NAME
+                value: "TODO: set DB_NAME"
+              - name: authenticationDatabase
+                value: "TODO: set authenticationDatabase"
+          restartPolicy: OnFailure
