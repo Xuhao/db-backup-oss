@@ -12,6 +12,8 @@ spec:
           - name: mongodb-backup
             image: xuhao/db-backup-oss:latest
             env:
+              - name: DB_TYPE
+                value: "mongodb"
               - name: MONGODB_HOST
                 value: "TODO: set MONGODB_HOST"
               - name: MONGODB_PORT
@@ -20,6 +22,8 @@ spec:
                 value: "TODO: set MONGODB_USER"
               - name: MONGODB_PASS
                 value: "TODO: set MONGODB_PASS"
+              - name: EXTRA_OPTS
+                value: "TODO: set EXTRA_OPTS"
               - name: DATE_FORMAT
                 value: "TODO: set DATE_FORMAT"
               - name: OSS_ENDPOINT
